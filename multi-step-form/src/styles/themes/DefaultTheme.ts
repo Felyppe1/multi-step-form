@@ -7,6 +7,7 @@ export const DefaultTheme = {
     hoverButton: '#938CFD',
     addsOnPriceText: '#7971C3',
     totalPriceText: '#4E41DB',
-    subText: '#A2A2AA',
+    subText: '#B4B4BD',
     errorText: '#D5374F',
+    white: 'white',
 }
