@@ -1,6 +1,10 @@
 import { styled } from "styled-components";
+import { NavLink } from "react-router-dom";
 
-export const ButtonStyle = styled.button`
+export const NavLinkStyle = styled(NavLink)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 2.5rem;
     width: 6.5rem;
     background-color: ${props => props.theme.bgButton};
@@ -9,7 +13,7 @@ export const ButtonStyle = styled.button`
     font-size: 1rem;
     cursor: pointer;
 
-    &:hover {
+    &:hover, &:focus {
         background-color: ${props => props.theme.hoverButton};
     }
 `

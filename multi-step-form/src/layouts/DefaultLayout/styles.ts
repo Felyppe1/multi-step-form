@@ -30,7 +30,13 @@ export const StepsDiv = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1.4rem;
-    padding: 2rem;
-    
+    padding: 2rem 1rem;
+`
+
+export const StepsSubDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 `

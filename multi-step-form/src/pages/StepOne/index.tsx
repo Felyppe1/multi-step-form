@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { Container, SubContainer, FieldDiv, Input, Label, SubText, Form, BottomDiv } from "./styles"
-import { Button } from "../../components/Button"
+import { NextLink } from "../../components/NextLink"
 
 export function StepOne() {
     return (
@@ -33,7 +33,7 @@ export function StepOne() {
                 </div>
                 <BottomDiv>
                     <NavLink to='/'></NavLink>
-                    <NavLink to='/plano'><Button>Próximo</Button></NavLink>
+                    <NextLink to='/plano'>Próximo</NextLink>
                 </BottomDiv>
             </SubContainer>
         </Container>

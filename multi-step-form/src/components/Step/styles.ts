@@ -13,22 +13,24 @@ export const Div = styled.div`
 export const Span = styled.span<SpanProps>`
     width: 2rem;
     height: 2rem;
-    border: 1px solid ${props => props.theme.white};
+    border: 1px solid ${props => props.active ? 'transparent' : props.theme.white};
     border-radius: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     color: ${props => props.active ? 'black' : props.theme.white};
-    ${props => props.active && `background-color:` + props.theme.bgActiveStep};
+    background-color: ${props => props.active && props.theme.bgActiveStep};
 `
 
 export const FirstText = styled.p`
     color: ${props => props.theme.subText};
-    font-size: .8rem;
+    font-size: .75rem;
 `
 
 export const SecondText = styled.p`
     color: ${props => props.theme.white};
     font-weight: 500;
-    margin-top: .2rem;
+    margin-top: .25rem;
+    font-size: .9rem;
 `
