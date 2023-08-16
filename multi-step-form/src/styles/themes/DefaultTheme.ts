@@ -4,7 +4,7 @@ export const DefaultTheme = {
     bgButton: '#03295A',
     bgActiveStep: '#BDE2FC',
     bgActiveCheckbox: '#433DF6',
-    hoverButton: '#938CFD',
+    hoverButton: '#1855A4',
     addsOnPriceText: '#7971C3',
     totalPriceText: '#4E41DB',
     subText: '#B4B4BD',

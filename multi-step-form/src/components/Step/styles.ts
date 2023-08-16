@@ -1,12 +1,16 @@
 import { styled } from 'styled-components'
 
+interface SpanProps {
+    active: boolean
+}
+
 export const Div = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
 `
 
-export const Span = styled.span`
+export const Span = styled.span<SpanProps>`
     width: 2rem;
     height: 2rem;
     border: 1px solid ${props => props.theme.white};
@@ -14,7 +18,8 @@ export const Span = styled.span`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${props => props.theme.white};
+    color: ${props => props.active ? 'black' : props.theme.white};
+    ${props => props.active && `background-color:` + props.theme.bgActiveStep};
 `
 
 export const FirstText = styled.p`

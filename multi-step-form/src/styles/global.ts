@@ -6,5 +6,8 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
         font-family: 'Ubuntu', sans-serif;
+        color: ${props => props.theme.bgButton};
+        outline: none;
+        border: none;
     }
 `
