@@ -36,7 +36,7 @@ export function StepFour() {
                 </div>
                 <BottomDiv>
                     <GoBackLink to='/extras'>Voltar</GoBackLink>
-                    <ConfirmButton to='/confirmacao'>Confirmar</ConfirmButton>
+                    <ConfirmButton to='/completo'>Confirmar</ConfirmButton>
                 </BottomDiv>
             </SubContainer>
         </Container>
