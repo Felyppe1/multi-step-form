@@ -59,6 +59,10 @@ export const Label = styled.label`
     width: 7.5rem;
     padding: 1rem;
     cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 0 .6px ${props => props.theme.bgButton};
+    }
 `
 
 export const Icon = styled.img`

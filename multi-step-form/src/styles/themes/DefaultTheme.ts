@@ -8,7 +8,7 @@ export const DefaultTheme = {
     addsOnPriceText: '#7971C3',
     totalPriceText: '#4E41DB',
     text: '#103d77',
-    subText: '#B4B4BD',
+    subText: '#b9b9c1',
     errorText: '#D5374F',
     white: 'white',
 }
