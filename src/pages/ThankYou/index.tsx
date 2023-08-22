@@ -1,5 +1,5 @@
 import { Container, SubContainer, Image, Text } from "./styles"
-import ThankYouIcon from '../../../public/images/icon-thank-you.svg'
+import ThankYouIcon from '/images/icon-thank-you.svg'
 
 export function ThankYou() {
     return (
