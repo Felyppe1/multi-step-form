@@ -3,15 +3,18 @@ import { Router } from './Router'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyles } from './styles/global'
 import { DefaultTheme } from './styles/themes/DefaultTheme'
+import { FormDataContextProvider } from './contexts/FormDataContext'
 
 function App() {
   return (
-    <ThemeProvider theme={DefaultTheme}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-      <GlobalStyles />
-    </ThemeProvider>
+    <FormDataContextProvider>
+      <ThemeProvider theme={DefaultTheme}>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+        <GlobalStyles />
+      </ThemeProvider>
+    </FormDataContextProvider>
   )
 }
 

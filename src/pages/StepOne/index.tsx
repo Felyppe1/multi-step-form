@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom"
-import { Container, SubContainer, FieldDiv, Input, LabelDiv, Label, Error, SubText, Form, BottomDiv } from "./styles"
-import { NextLink } from "../../components/NextLink"
+import { NavLink, useNavigate } from "react-router-dom"
+import * as S from "./styles"
 import { useForm } from "react-hook-form"
 import * as zod from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRef } from "react"
+import { useContext } from "react"
+import { SubmitButton } from "../../styles/SubmitButton"
+import { FormDataContext } from "../../contexts/FormDataContext"
 
 const StepOneValidationSchema = zod.object({
     name: zod.string().min(1, 'Nome é obrigatório'),
@@ -15,6 +16,8 @@ const StepOneValidationSchema = zod.object({
 type StepOneData = zod.infer<typeof StepOneValidationSchema>
 
 export function StepOne() {
+    const { saveStepOneData } = useContext(FormDataContext)
+
     const { register, handleSubmit, formState: {errors} } = useForm({
         resolver: zodResolver(StepOneValidationSchema),
         defaultValues: {
@@ -24,70 +27,70 @@ export function StepOne() {
         }
     })
 
-    const errorRef = useRef<HTMLSpanElement | null>(null)
-
-    console.log(!!errors.name?.message)
+    const navigate = useNavigate()
 
     function getStepOneData(data: StepOneData) {
-        console.log(data)
+        if (StepOneValidationSchema.safeParse(data)) {
+            saveStepOneData(data)
+            navigate('/plano')
+        }
     }
 
     return (
-        <Container>
-            <SubContainer>
+        <S.Container>
+            <S.SubContainer>
                 <div>
                     <h1>Informações pessoais</h1>
-                    <SubText>Por favor, insira seu nome, endereço de email e celular.</SubText>
+                    <S.SubText>Por favor, insira seu nome, endereço de email e celular.</S.SubText>
 
-                    <Form onSubmit={handleSubmit(getStepOneData)}>
-                        <FieldDiv>
-                            <LabelDiv>
-                                <Label htmlFor="name">Nome</Label>
-                                {errors.name && <Error ref={errorRef} >{errors.name.message}</Error>}
-                            </LabelDiv>
-                            <Input 
+                    <S.Form onSubmit={handleSubmit(getStepOneData)}>
+                        <S.FieldDiv>
+                            <S.LabelDiv>
+                                <S.Label htmlFor="name">Nome</S.Label>
+                                {errors.name && <S.Error>{errors.name?.message}</S.Error>}
+                            </S.LabelDiv>
+                            <S.Input 
                                 {...register('name')} 
-                                isInvalid={!!errors.name?.message} 
+                                $isInvalid={!!errors.name?.message} 
                                 type="text" 
                                 placeholder="ex. Luiz Felyppe Nunes" 
-                                id="name" 
+                                id="name"
                             />
-                        </FieldDiv>
-                        <FieldDiv>
-                            <LabelDiv>
-                                <Label htmlFor="email">Email</Label>
-                                {errors?.email && <Error>{errors.email.message}</Error>}
-                            </LabelDiv>
-                            <Input 
+                        </S.FieldDiv>
+                        <S.FieldDiv>
+                            <S.LabelDiv>
+                                <S.Label htmlFor="email">Email</S.Label>
+                                {errors?.email && <S.Error>{errors.email?.message}</S.Error>}
+                            </S.LabelDiv>
+                            <S.Input 
                                 {...register('email')}
-                                isInvalid={!!errors.email?.message}
+                                $isInvalid={!!errors.email?.message}
                                 type="email" 
                                 placeholder="ex. felyppe@gmail.com" 
                                 id="email" 
                             />
-                        </FieldDiv>
-                        <FieldDiv>
-                            <LabelDiv>
-                                <Label htmlFor="cellphone">Celular</Label>
-                                {errors?.cellphone && <Error>{errors?.cellphone.message}</Error>}
-                            </LabelDiv>
-                            <Input 
+                        </S.FieldDiv>
+                        <S.FieldDiv>
+                            <S.LabelDiv>
+                                <S.Label htmlFor="cellphone">Celular</S.Label>
+                                {errors?.cellphone && <S.Error>{errors.cellphone?.message}</S.Error>}
+                            </S.LabelDiv>
+                            <S.Input 
                                 {...register('cellphone')} 
-                                isInvalid={!!errors.cellphone?.message} 
+                                $isInvalid={!!errors.cellphone?.message} 
                                 type="text" 
                                 placeholder="ex. 21 98888-5555" 
                                 id="cellphone" 
                             />
-                        </FieldDiv>
+                        </S.FieldDiv>
                         <input hidden type="submit" value="" />
-                    </Form>
+                    </S.Form>
                 </div>
-                <BottomDiv>
+                <S.BottomDiv>
                     <NavLink to='/'></NavLink>
-                    <NextLink to='/plano'>Próximo</NextLink>
-                    <button onClick={handleSubmit(getStepOneData)}>Teste</button>
-                </BottomDiv>
-            </SubContainer>
-        </Container>
+                    <SubmitButton onClick={handleSubmit(getStepOneData)}>Próximo</SubmitButton>
+                </S.BottomDiv>
+            </S.SubContainer>
+        </S.Container>
     )
 }

@@ -1,7 +1,7 @@
 import { styled, keyframes } from "styled-components";
 
 interface InputProps {
-    isInvalid?: boolean
+    $isInvalid?: boolean
 }
 
 export const Container = styled.div`
@@ -53,12 +53,12 @@ export const Input = styled.input<InputProps>`
     padding: 0.7rem 0.6rem;
     font-weight: 500;
     border-radius: 0.35rem;
-    border: 1px solid ${props => props.isInvalid ? props.theme.errorText :props.theme.subText};
+    border: 1px solid ${props => props.$isInvalid ? props.theme.errorText :props.theme.subText};
     margin-top: 0.4rem;
     width: 100%;
 
     &:focus {
-        box-shadow: 0 0 0 .6px ${props => props.isInvalid ? props.theme.errorText : props.theme.bgButton};
+        box-shadow: 0 0 0 .6px ${props => props.$isInvalid ? props.theme.errorText : props.theme.bgButton};
     }
 
     &::placeholder {
@@ -67,7 +67,7 @@ export const Input = styled.input<InputProps>`
 `
 
 export const FieldDiv = styled.div`
-    margin-top: 1rem
+    margin-top: 1rem;
 `
 
 export const BottomDiv = styled.div`
