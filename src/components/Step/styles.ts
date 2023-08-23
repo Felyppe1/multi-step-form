@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 interface SpanProps {
-    active: boolean
+    $active: boolean
 }
 
 export const Div = styled.div`
@@ -13,14 +13,14 @@ export const Div = styled.div`
 export const Span = styled.span<SpanProps>`
     width: 2rem;
     height: 2rem;
-    border: 1px solid ${props => props.active ? 'transparent' : props.theme.white};
+    border: 1px solid ${props => props.$active ? 'transparent' : props.theme.white};
     border-radius: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    color: ${props => props.active ? 'black' : props.theme.white};
-    background-color: ${props => props.active && props.theme.bgActiveStep};
+    color: ${props => props.$active ? 'black' : props.theme.white};
+    background-color: ${props => props.$active && props.theme.bgActiveStep};
 `
 
 export const FirstText = styled.p`

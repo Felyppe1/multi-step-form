@@ -10,7 +10,7 @@ type StepProps = {
 export function Step({ step, text1, text2, active }: StepProps) {
     return (
         <Div>
-            <Span active={active}>{step}</Span>
+            <Span $active={active}>{step}</Span>
             <div>
                 <FirstText>{text1}</FirstText>
                 <SecondText>{text2}</SecondText>
