@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { NavLink } from "react-router-dom";
 
 interface GearButtonProps {
-    checked: boolean
+    checked?: boolean
 }
 
 export const Container = styled.div`
@@ -110,6 +110,7 @@ export const PaymentLabel = styled.label`
     font-weight: 600;
     font-size: .9rem;
     cursor: pointer;
+    transition: color .1s;
 `
 
 export const GearButton = styled.button<GearButtonProps>`
@@ -120,7 +121,6 @@ export const GearButton = styled.button<GearButtonProps>`
     padding: 0 .2rem;
     cursor: pointer;
     display: flex;
-    justify-content: ${props => props.checked ? 'flex-end' : 'flex-start'};
     align-items: center;
     position: relative;
 
@@ -131,6 +131,9 @@ export const GearButton = styled.button<GearButtonProps>`
         height: .7rem;
         width: .7rem;
         border-radius: 50%;
+        position: absolute;
+        transition: translate .1s linear;
+        translate: ${props => props.checked ? '0.9rem' : '0'};
     }
 `
 

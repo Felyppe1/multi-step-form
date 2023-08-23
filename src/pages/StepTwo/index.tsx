@@ -1,5 +1,5 @@
 import { NextLink } from "../../components/NextLink"
-import { Container, SubContainer, SubText, Form, Input, Label, Icon, BottomDiv, PlanName, PlanValue, GoBackLink, FormFirstSection, FormSecondSection, PaymentInput, PaymentLabel, GearButton, MonthsFree } from "./styles"
+import * as S from "./styles"
 import Arcade  from '/images/icon-arcade.svg'
 import Advanced  from '/images/icon-advanced.svg'
 import Pro  from '/images/icon-pro.svg'
@@ -30,78 +30,78 @@ export function StepTwo() {
     }
 
     return (
-        <Container>
-            <SubContainer>
+        <S.Container>
+            <S.SubContainer>
                 <div>
                     <h1>Selecione seu plano</h1>
-                    <SubText>Você tem a opção de pagamento mensal ou anual.</SubText>
+                    <S.SubText>Você tem a opção de pagamento mensal ou anual.</S.SubText>
 
-                    <Form action="">
-                        <FormFirstSection>
+                    <S.Form action="">
+                        <S.FormFirstSection>
                             <div>
-                                <Input type="radio" name="plans" id="arcade" />
-                                <Label htmlFor="arcade">
-                                    <Icon src={Arcade} alt="" />
+                                <S.Input type="radio" name="plans" id="arcade" />
+                                <S.Label htmlFor="arcade">
+                                    <S.Icon src={Arcade} alt="" />
                                     <div>
-                                        <PlanName>Arcade</PlanName>
-                                        <PlanValue>{arcadePrice}</PlanValue>
-                                        {yearlyChecked && <MonthsFree>2 meses grátis</MonthsFree>}
+                                        <S.PlanName>Arcade</S.PlanName>
+                                        <S.PlanValue>{arcadePrice}</S.PlanValue>
+                                        {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
                                     </div>
-                                </Label>
+                                </S.Label>
                             </div>
                             <div>
-                                <Input type="radio" name="plans" id="advanced" />
-                                <Label htmlFor="advanced">
-                                    <Icon src={Advanced} alt="" />
+                                <S.Input type="radio" name="plans" id="advanced" />
+                                <S.Label htmlFor="advanced">
+                                    <S.Icon src={Advanced} alt="" />
                                     <div>
-                                        <PlanName>Avançado</PlanName>
-                                        <PlanValue>{advancedPrice}</PlanValue>
-                                        {yearlyChecked && <MonthsFree>2 meses grátis</MonthsFree>}
+                                        <S.PlanName>Avançado</S.PlanName>
+                                        <S.PlanValue>{advancedPrice}</S.PlanValue>
+                                        {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
                                     </div>
-                                </Label>
+                                </S.Label>
                             </div>
                             <div>
-                                <Input type="radio" name="plans" id="pro" />
-                                <Label htmlFor="pro">
-                                    <Icon src={Pro} alt="" />
+                                <S.Input type="radio" name="plans" id="pro" />
+                                <S.Label htmlFor="pro">
+                                    <S.Icon src={Pro} alt="" />
                                     <div>
-                                        <PlanName>Profissional</PlanName>
-                                        <PlanValue>{proPrice}</PlanValue>
-                                        {yearlyChecked && <MonthsFree>2 meses grátis</MonthsFree>}
+                                        <S.PlanName>Profissional</S.PlanName>
+                                        <S.PlanValue>{proPrice}</S.PlanValue>
+                                        {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
                                     </div>
-                                </Label>
+                                </S.Label>
                             </div>
-                        </FormFirstSection>
-                        <FormSecondSection>
+                        </S.FormFirstSection>
+                        <S.FormSecondSection>
                             <div>
-                                <PaymentInput 
+                                <S.PaymentInput 
                                     type="radio" 
                                     name="payment" 
                                     id="monthly" 
                                     checked={!yearlyChecked}
                                     onChange={handleSetYearlyChecked}
                                 />
-                                <PaymentLabel htmlFor="monthly">Mensal</PaymentLabel>
+                                <S.PaymentLabel htmlFor="monthly">Mensal</S.PaymentLabel>
                             </div>
-                            <GearButton type='button' checked={yearlyChecked} onClick={handleSetYearlyChecked}></GearButton>
+                            <S.GearButton type='button' checked={yearlyChecked} onClick={handleSetYearlyChecked}></S.GearButton>
                             <div>
-                                <PaymentInput 
+                                <S.PaymentInput 
                                     type="radio" 
                                     name="payment" 
                                     id="yearly"
                                     checked={yearlyChecked}
                                     onChange={handleSetYearlyChecked}
                                 />
-                                <PaymentLabel htmlFor="yearly">Anual</PaymentLabel>
+                                <S.PaymentLabel htmlFor="yearly">Anual</S.PaymentLabel>
                             </div>
-                        </FormSecondSection>
-                    </Form>
+                        </S.FormSecondSection>
+                    </S.Form>
                 </div>
-                <BottomDiv>
-                    <GoBackLink to='/'>Voltar</GoBackLink>
+                <S.BottomDiv>
+                    <S.GoBackLink to='/'>Voltar</S.GoBackLink>
                     <NextLink to='/extras'>Próximo</NextLink>
-                </BottomDiv>
-            </SubContainer>
-        </Container>
+                </S.BottomDiv>
+            </S.SubContainer>
+        </S.Container>
     )
 }
