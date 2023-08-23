@@ -1,4 +1,8 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
+
+interface InputProps {
+    isInvalid?: boolean
+}
 
 export const Container = styled.div`
     width: 100%;
@@ -31,22 +35,30 @@ export const Label = styled.label`
     color: ${props => props.theme.bgButton};
 `
 
+const appear = keyframes`
+    to {
+        opacity: 1;
+    }
+`
+
 export const Error = styled.span`
     font-size: .9rem;
     font-weight: 500;
     color: ${props => props.theme.errorText};
+    opacity: 0;
+    animation: ${appear} .2s linear forwards;
 `
 
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
     padding: 0.7rem 0.6rem;
     font-weight: 500;
     border-radius: 0.35rem;
-    border: 1px solid ${props => props.theme.subText};
+    border: 1px solid ${props => props.isInvalid ? props.theme.errorText :props.theme.subText};
     margin-top: 0.4rem;
     width: 100%;
 
     &:focus {
-        box-shadow: 0 0 0 .6px ${props => props.theme.bgButton};
+        box-shadow: 0 0 0 .6px ${props => props.isInvalid ? props.theme.errorText : props.theme.bgButton};
     }
 
     &::placeholder {
