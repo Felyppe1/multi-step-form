@@ -21,10 +21,20 @@ export const SubText = styled.p`
 export const Form = styled.form`
     margin-top: 2rem;
 `
+export const LabelDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 
 export const Label = styled.label`
     font-size: .9rem;
     color: ${props => props.theme.bgButton};
+`
+
+export const Error = styled.span`
+    font-size: .9rem;
+    font-weight: 500;
+    color: ${props => props.theme.errorText};
 `
 
 export const Input = styled.input`
