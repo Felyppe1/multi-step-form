@@ -9,29 +9,31 @@ import { FormDataContext } from "../../contexts/FormDataContext"
 
 const StepOneValidationSchema = zod.object({
     name: zod.string().min(1, 'Nome é obrigatório'),
-    email: zod.string().refine(field => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field), { message: 'Email inválido' }),
+    email: zod.string().regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Email inválido'),
     cellphone: zod.string().min(1, 'Celular é obrigatório')
 })
 
 type StepOneData = zod.infer<typeof StepOneValidationSchema>
 
 export function StepOne() {
-    const { saveStepOneData } = useContext(FormDataContext)
+    const { stepOneData, setStepOneData } = useContext(FormDataContext)
 
-    const { register, handleSubmit, formState: {errors} } = useForm({
+    const subscriptionForm = useForm({
         resolver: zodResolver(StepOneValidationSchema),
         defaultValues: {
-            name: '',
-            email: '',
-            cellphone: ''
+            name: stepOneData.name,
+            email: stepOneData.email,
+            cellphone: stepOneData.cellphone
         }
     })
+
+    const { register, handleSubmit, formState: {errors} } = subscriptionForm
 
     const navigate = useNavigate()
 
     function getStepOneData(data: StepOneData) {
         if (StepOneValidationSchema.safeParse(data)) {
-            saveStepOneData(data)
+            setStepOneData(data)
             navigate('/plano')
         }
     }
