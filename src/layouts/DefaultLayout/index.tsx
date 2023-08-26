@@ -14,7 +14,7 @@ export function DefaultLayout() {
         activeStep = 2
     } else if (path === '/extras') {
         activeStep = 3
-    } else if (path === '/confirmacao') {
+    } else if (path === '/confirmacao' || path === '/completo') {
         activeStep = 4
     }
 
