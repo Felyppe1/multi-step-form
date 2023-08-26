@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Container, SubContainer, SubText, ReviewDiv, BaseDiv, PlanDiv, NavChange, AddsOnDiv, ItemText, PriceText, TotalDiv, TotalText, BottomDiv, GoBackLink, ConfirmButton } from "./styles"
+import * as S from "./styles"
 import { FormDataContext } from "../../contexts/FormDataContext"
 
 export function StepFour() {
@@ -50,53 +50,53 @@ export function StepFour() {
     const total = billingPrice! + (stepThreeData.onlineServices ? onlineServicesPrice : 0) + (stepThreeData.storage ? storagePrice : 0) + (stepThreeData.profile ? profilePrice : 0)
 
     return (
-        <Container>
-            <SubContainer>
+        <S.Container>
+            <S.SubContainer>
                 <div>
                     <h1>Escolha adicionais</h1>
-                    <SubText>Adicionais ajudam a enriquecer sua experiência.</SubText>
+                    <S.SubText>Adicionais ajudam a enriquecer sua experiência.</S.SubText>
                     <div>
-                        <ReviewDiv>
-                            <PlanDiv>
+                        <S.ReviewDiv>
+                            <S.PlanDiv>
                                 <div>
                                     <p>{`${plan} (${billing})`}</p>
-                                    <NavChange to='/plano'>Alterar</NavChange>
+                                    <S.NavChange to='/plano'>Alterar</S.NavChange>
                                 </div>
                                 <p>${billingPrice}/mês</p>
-                            </PlanDiv>
-                            <AddsOnDiv>
+                            </S.PlanDiv>
+                            <S.AddsOnDiv>
                                 {stepThreeData.onlineServices &&
-                                <BaseDiv>
-                                    <ItemText>Serviço online</ItemText>
-                                    <PriceText>+${onlineServicesPrice}/mês</PriceText>
-                                </BaseDiv>
+                                <S.BaseDiv>
+                                    <S.ItemText>Serviço online</S.ItemText>
+                                    <S.PriceText>+${onlineServicesPrice}/mês</S.PriceText>
+                                </S.BaseDiv>
                                 }
                                 {stepThreeData.storage &&
-                                <BaseDiv>
-                                    <ItemText>Mais armazenamento</ItemText>
-                                    <PriceText>+${storagePrice}/mês</PriceText>
-                                </BaseDiv>
+                                <S.BaseDiv>
+                                    <S.ItemText>Mais armazenamento</S.ItemText>
+                                    <S.PriceText>+${storagePrice}/mês</S.PriceText>
+                                </S.BaseDiv>
                                 }
                                 {stepThreeData.profile &&
-                                <BaseDiv>
-                                    <ItemText>Perfil personalizado</ItemText>
-                                    <PriceText>+${profilePrice}/mês</PriceText>
-                                </BaseDiv>
+                                <S.BaseDiv>
+                                    <S.ItemText>Perfil personalizado</S.ItemText>
+                                    <S.PriceText>+${profilePrice}/mês</S.PriceText>
+                                </S.BaseDiv>
                                 }
-                            </AddsOnDiv>
+                            </S.AddsOnDiv>
                             
-                        </ReviewDiv>
-                        <TotalDiv>
-                            <ItemText>{stepTwoData.billing == 'monthly' ? 'Total (por mês)' : 'Total (por ano)'}</ItemText>
-                            <TotalText>${total.toFixed(2).replace('.', ',')}</TotalText>
-                        </TotalDiv>
+                        </S.ReviewDiv>
+                        <S.TotalDiv>
+                            <S.ItemText>{stepTwoData.billing == 'monthly' ? 'Total (por mês)' : 'Total (por ano)'}</S.ItemText>
+                            <S.TotalText>${total.toFixed(2).replace('.', ',')}</S.TotalText>
+                        </S.TotalDiv>
                     </div>
                 </div>
-                <BottomDiv>
-                    <GoBackLink to='/extras'>Voltar</GoBackLink>
-                    <ConfirmButton to='/completo'>Confirmar</ConfirmButton>
-                </BottomDiv>
-            </SubContainer>
-        </Container>
+                <S.BottomDiv>
+                    <S.GoBackLink to='/extras'>Voltar</S.GoBackLink>
+                    <S.ConfirmButton to='/completo'>Confirmar</S.ConfirmButton>
+                </S.BottomDiv>
+            </S.SubContainer>
+        </S.Container>
     )
 }

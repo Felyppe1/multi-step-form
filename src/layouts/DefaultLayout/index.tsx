@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { Container, Main, StepsDiv, StepsSubDiv } from './styles'
+import { Background, Container, Main, StepsDiv, StepsSubDiv } from './styles'
 import { Step } from '../../components/Step'
-// import Image from '/images/bg-sidebar-desktop.svg'
 
 export function DefaultLayout() {
     const location = useLocation()
@@ -20,6 +19,13 @@ export function DefaultLayout() {
 
     return (
         <Container>
+            <Background>
+                <Step step='1' active={activeStep === 1} />
+                <Step step='2' active={activeStep === 2} />
+                <Step step='3' active={activeStep === 3} />
+                <Step step='4' active={activeStep === 4} />
+            </Background>
+            
             <Main>
                 <StepsDiv>
                     <StepsSubDiv>

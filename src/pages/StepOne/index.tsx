@@ -39,6 +39,7 @@ export function StepOne() {
     }
 
     return (
+        <>
         <S.Container>
             <S.SubContainer>
                 <div>
@@ -94,5 +95,6 @@ export function StepOne() {
                 </S.BottomDiv>
             </S.SubContainer>
         </S.Container>
+        </>
     )
 }

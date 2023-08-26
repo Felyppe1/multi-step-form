@@ -8,13 +8,25 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-left: 1rem;
+
+    @media (max-width: 600px) {
+        margin-left: 0;
+    }
 `
 
 export const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
     padding: 2.5rem 0 1rem 0;
+    max-width: 30rem;
+    width: 100%;
+
+    @media (max-width: 600px) {
+        padding: 1rem 0.5rem;
+    }
 `
 
 export const SubText = styled.p`

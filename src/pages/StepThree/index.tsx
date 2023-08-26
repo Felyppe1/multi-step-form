@@ -1,4 +1,4 @@
-import { Container, SubContainer, SubText, Form, Input, Label, FieldWrapper, StyledCheckbox, FirstText, SecondText, PriceText, BottomDiv } from "./styles"
+import * as S from "./styles"
 import { Check } from 'phosphor-react'
 import * as zod from 'zod'
 import { useForm } from 'react-hook-form'
@@ -56,60 +56,60 @@ export function StepThree() {
     }
 
     return (
-        <Container>
-            <SubContainer>
+        <S.Container>
+            <S.SubContainer>
                 <div>
-                    <h1>Escolha adicionais</h1>
-                    <SubText>Adicionais ajudam a enriquecer sua experiência.</SubText>
-                    <Form onSubmit={handleSubmit(onSubmitNext)}>
-                        <Input type="checkbox" {...register('onlineServices')} id="onlineServices" />
-                        <Label htmlFor="onlineServices">
-                            <FieldWrapper>
-                                <StyledCheckbox>
+                    <S.Title>Escolha adicionais</S.Title>
+                    <S.SubText>Adicionais ajudam a enriquecer sua experiência.</S.SubText>
+                    <S.Form onSubmit={handleSubmit(onSubmitNext)}>
+                        <S.Input type="checkbox" {...register('onlineServices')} id="onlineServices" />
+                        <S.Label htmlFor="onlineServices">
+                            <S.FieldWrapper>
+                                <S.StyledCheckbox>
                                     <Check color='white' size={14} weight="bold" />
-                                </StyledCheckbox>
+                                </S.StyledCheckbox>
                                 <div>
-                                    <FirstText>Serviço online</FirstText>
-                                    <SecondText>Acesso a jogos multijogadores</SecondText>
+                                    <S.FirstText>Serviço online</S.FirstText>
+                                    <S.SecondText>Acesso a jogos multijogadores</S.SecondText>
                                 </div>
-                            </FieldWrapper>
-                            <PriceText>+${onlineServicesPrice}/mês</PriceText>
-                        </Label>
+                            </S.FieldWrapper>
+                            <S.PriceText>+${onlineServicesPrice}/mês</S.PriceText>
+                        </S.Label>
                     
-                        <Input type="checkbox" {...register('storage')} id="storage" />
-                        <Label htmlFor="storage">
-                            <FieldWrapper>
-                                <StyledCheckbox>
+                        <S.Input type="checkbox" {...register('storage')} id="storage" />
+                        <S.Label htmlFor="storage">
+                            <S.FieldWrapper>
+                                <S.StyledCheckbox>
                                     <Check color='white' size={14} weight="bold" />
-                                </StyledCheckbox>
+                                </S.StyledCheckbox>
                                 <div>
-                                    <FirstText>Mais armazenamento</FirstText>
-                                    <SecondText>1TB extra de armazenamento na nuvem</SecondText>
+                                    <S.FirstText>Mais armazenamento</S.FirstText>
+                                    <S.SecondText>1TB extra de armazenamento na nuvem</S.SecondText>
                                 </div>
-                            </FieldWrapper>
-                            <PriceText>+${storagePrice}/mês</PriceText>
-                        </Label>
+                            </S.FieldWrapper>
+                            <S.PriceText>+${storagePrice}/mês</S.PriceText>
+                        </S.Label>
                     
-                        <Input type="checkbox" {...register('profile')} id="profile"/>
-                        <Label htmlFor="profile">
-                            <FieldWrapper>
-                                <StyledCheckbox>
+                        <S.Input type="checkbox" {...register('profile')} id="profile"/>
+                        <S.Label htmlFor="profile">
+                            <S.FieldWrapper>
+                                <S.StyledCheckbox>
                                     <Check color='white' size={14} weight="bold" />
-                                </StyledCheckbox>
+                                </S.StyledCheckbox>
                                 <div>
-                                    <FirstText>Perfil customizado</FirstText>
-                                    <SecondText>Customize temas no seu perfil</SecondText>
+                                    <S.FirstText>Perfil customizado</S.FirstText>
+                                    <S.SecondText>Customize temas no seu perfil</S.SecondText>
                                 </div>
-                            </FieldWrapper>
-                            <PriceText>+${profilePrice}/mês</PriceText>
-                        </Label>
-                    </Form>
+                            </S.FieldWrapper>
+                            <S.PriceText>+${profilePrice}/mês</S.PriceText>
+                        </S.Label>
+                    </S.Form>
                 </div>
-                <BottomDiv>
+                <S.BottomDiv>
                     <GoBackButton onClick={handleSubmit(onSubmitPrevious)}>Voltar</GoBackButton>
                     <SubmitButton onClick={handleSubmit(onSubmitNext)}>Próximo</SubmitButton>
-                </BottomDiv>
-            </SubContainer>
-        </Container>
+                </S.BottomDiv>
+            </S.SubContainer>
+        </S.Container>
     )
 }

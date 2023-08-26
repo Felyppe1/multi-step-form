@@ -6,19 +6,35 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-left: 1rem;
+
+    @media (max-width: 600px) {
+        margin-left: 0;
+    }
 `
 
 export const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
     padding: 2.5rem 0 1rem 0;
-    max-width: 25rem;
+    max-width: 30rem;
     width: 100%;
+
+    @media (max-width: 700px) {
+        padding: 1rem 0;
+    }
 `
 
 export const Title = styled.h1`
+    @media (max-width: 700px) {
+        font-size: 1.85rem;
+    }
 
+    @media (max-width: 600px) {
+        font-size: 2rem;
+    }
 `
 
 export const SubText = styled.p`
@@ -58,6 +74,7 @@ export const StyledCheckbox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 `
 
 export const Input = styled.input`

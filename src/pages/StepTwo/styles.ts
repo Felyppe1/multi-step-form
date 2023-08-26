@@ -9,15 +9,25 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-left: 1rem;
+
+    @media (max-width: 600px) {
+        margin-left: 0;
+    }
 `
 
 export const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
     padding: 2.5rem 0 1rem 0;
-    max-width: 25rem;
+    max-width: 30rem;
     width: 100%;
+
+    @media (max-width: 600px) {
+        padding: 1rem 0.5rem;
+    }
 `
 
 export const Title = styled.h1`
@@ -38,7 +48,12 @@ export const Form = styled.form`
 
 export const FormFirstSection = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+
+    @media (max-width: 785px) {
+        flex-direction: column;
+        gap: .6rem;
+    }
 `
 
 export const Input = styled.input`
@@ -64,6 +79,14 @@ export const Label = styled.label`
         background-color: ${props => props.theme.bgActiveChoices};
         box-shadow: 0 0 0 .6px ${props => props.theme.bgButton};
     }
+
+    @media (max-width: 785px) {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1rem;
+        width: 100%;
+        padding: 0.6rem 1rem;
+    }
 `
 
 export const Icon = styled.img`
@@ -74,12 +97,24 @@ export const Icon = styled.img`
 export const PlanName = styled.p`
     font-weight: 600;
     font-size: .9rem;
+
+    /* @media (max-width: 785px) {
+        & {
+            font-size: .8rem;
+        }
+    } */
 `
 
 export const PlanValue = styled.p`
     font-size: .8rem;
     color: ${props => props.theme.subText};
     margin-top: .3rem;
+
+    /* @media (max-width: 785px) {
+        & {
+            font-size: .7rem;
+        }
+    } */
 `
 
 export const MonthsFree = styled.p`

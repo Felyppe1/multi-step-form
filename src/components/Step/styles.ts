@@ -11,8 +11,8 @@ export const Div = styled.div`
 `
 
 export const Span = styled.span<SpanProps>`
-    width: 2rem;
-    height: 2rem;
+    width: 2.3rem;
+    height: 2.3rem;
     border: 1px solid ${props => props.$active ? 'transparent' : props.theme.white};
     border-radius: 4rem;
     display: flex;
@@ -33,4 +33,5 @@ export const SecondText = styled.p`
     font-weight: 500;
     margin-top: .25rem;
     font-size: .9rem;
+    white-space: nowrap;
 `

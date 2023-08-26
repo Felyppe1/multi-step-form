@@ -12,8 +12,13 @@ export const SubContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    max-width: 25rem;
+    max-width: 30rem;
     width: 100%;
+    margin: 0 2rem;
+`
+
+export const Title = styled.h1`
+    text-align: center;
 `
 
 export const Image = styled.img`
