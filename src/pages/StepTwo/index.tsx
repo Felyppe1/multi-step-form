@@ -17,7 +17,7 @@ const StepTwoValidationSchema = zod.object({
 })
 
 export function StepTwo() {
-    const { stepTwoData, setStepTwoData, billingOptions } = useContext(FormDataContext)
+    const { stepTwoData, setStepTwoData, billingInfos } = useContext(FormDataContext)
     
     const planForm = useForm({
         resolver: zodResolver(StepTwoValidationSchema),
@@ -37,13 +37,13 @@ export function StepTwo() {
     let proPrice
 
     if (yearlyChecked) {
-        arcadePrice = `$${billingOptions.yearly.arcadePrice}/mês`
-        advancedPrice = `$${billingOptions.yearly.advancedPrice}/mês`
-        proPrice = `$${billingOptions.yearly.proPrice}/mês`
+        arcadePrice = `$${billingInfos.yearly.planPrices.arcadePrice}/mês`
+        advancedPrice = `$${billingInfos.yearly.planPrices.advancedPrice}/mês`
+        proPrice = `$${billingInfos.yearly.planPrices.proPrice}/mês`
     } else {
-        arcadePrice = `$${billingOptions.monthly.arcadePrice}/mês`
-        advancedPrice = `$${billingOptions.monthly.advancedPrice}/mês`
-        proPrice = `$${billingOptions.monthly.proPrice}/mês`
+        arcadePrice = `$${billingInfos.monthly.planPrices.arcadePrice}/mês`
+        advancedPrice = `$${billingInfos.monthly.planPrices.advancedPrice}/mês`
+        proPrice = `$${billingInfos.monthly.planPrices.proPrice}/mês`
     }
 
     const navigate = useNavigate()

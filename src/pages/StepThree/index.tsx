@@ -1,16 +1,68 @@
-import { NextLink } from "../../components/NextLink"
-import { Container, SubContainer, SubText, Form, Input, Label, FieldWrapper, StyledCheckbox, FirstText, SecondText, PriceText, BottomDiv, GoBackLink } from "./styles"
+import { Container, SubContainer, SubText, Form, Input, Label, FieldWrapper, StyledCheckbox, FirstText, SecondText, PriceText, BottomDiv } from "./styles"
 import { Check } from 'phosphor-react'
+import * as zod from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useContext } from "react"
+import { FormDataContext } from "../../contexts/FormDataContext"
+import { useNavigate } from "react-router-dom"
+import { SubmitButton } from "../../styles/SubmitButton"
+import { GoBackButton } from "../../styles/GoBackButton"
+
+const stepThreeValidationSchema = zod.object({
+    onlineServices: zod.boolean(),
+    storage: zod.boolean(),
+    profile: zod.boolean()
+})
+
+type StepThreeData = zod.infer<typeof stepThreeValidationSchema>
 
 export function StepThree() {
+    const { stepThreeData, setStepThreeData, stepTwoData, billingInfos } = useContext(FormDataContext)
+
+    const { register, handleSubmit } = useForm({
+        resolver: zodResolver(stepThreeValidationSchema),
+        defaultValues: {
+            onlineServices: stepThreeData.onlineServices,
+            storage: stepThreeData.storage,
+            profile: stepThreeData.profile
+        }
+    })
+
+    let onlineServicesPrice
+    let storagePrice
+    let profilePrice
+
+    if (stepTwoData.billing == 'monthly') {
+        onlineServicesPrice = billingInfos.monthly.addsOnPrices.onlineServices
+        storagePrice = billingInfos.monthly.addsOnPrices.storage
+        profilePrice = billingInfos.monthly.addsOnPrices.profile
+    } else {
+        onlineServicesPrice = billingInfos.yearly.addsOnPrices.onlineServices
+        storagePrice = billingInfos.yearly.addsOnPrices.storage
+        profilePrice = billingInfos.yearly.addsOnPrices.profile
+    }
+
+    const navigate = useNavigate()
+
+    function onSubmitNext(data: StepThreeData) {
+        setStepThreeData(data)
+        navigate('/confirmacao')
+    }
+
+    function onSubmitPrevious(data: StepThreeData) {
+        setStepThreeData(data)
+        navigate('/plano')
+    }
+
     return (
         <Container>
             <SubContainer>
                 <div>
                     <h1>Escolha adicionais</h1>
                     <SubText>Adicionais ajudam a enriquecer sua experiência.</SubText>
-                    <Form action="">
-                        <Input type="checkbox" name="onlineServices" id="onlineServices" />
+                    <Form onSubmit={handleSubmit(onSubmitNext)}>
+                        <Input type="checkbox" {...register('onlineServices')} id="onlineServices" />
                         <Label htmlFor="onlineServices">
                             <FieldWrapper>
                                 <StyledCheckbox>
@@ -21,10 +73,10 @@ export function StepThree() {
                                     <SecondText>Acesso a jogos multijogadores</SecondText>
                                 </div>
                             </FieldWrapper>
-                            <PriceText>+$10/mês</PriceText>
+                            <PriceText>+${onlineServicesPrice}/mês</PriceText>
                         </Label>
                     
-                        <Input type="checkbox" name="storage" id="storage" />
+                        <Input type="checkbox" {...register('storage')} id="storage" />
                         <Label htmlFor="storage">
                             <FieldWrapper>
                                 <StyledCheckbox>
@@ -35,10 +87,10 @@ export function StepThree() {
                                     <SecondText>1TB extra de armazenamento na nuvem</SecondText>
                                 </div>
                             </FieldWrapper>
-                            <PriceText>+$20/mês</PriceText>
+                            <PriceText>+${storagePrice}/mês</PriceText>
                         </Label>
                     
-                        <Input type="checkbox" name="profile" id="profile"/>
+                        <Input type="checkbox" {...register('profile')} id="profile"/>
                         <Label htmlFor="profile">
                             <FieldWrapper>
                                 <StyledCheckbox>
@@ -49,13 +101,13 @@ export function StepThree() {
                                     <SecondText>Customize temas no seu perfil</SecondText>
                                 </div>
                             </FieldWrapper>
-                            <PriceText>+$5/mês</PriceText>
+                            <PriceText>+${profilePrice}/mês</PriceText>
                         </Label>
                     </Form>
                 </div>
                 <BottomDiv>
-                    <GoBackLink to='/plano'>Voltar</GoBackLink>
-                    <NextLink to='/confirmacao'>Próximo</NextLink>
+                    <GoBackButton onClick={handleSubmit(onSubmitPrevious)}>Voltar</GoBackButton>
+                    <SubmitButton onClick={handleSubmit(onSubmitNext)}>Próximo</SubmitButton>
                 </BottomDiv>
             </SubContainer>
         </Container>
