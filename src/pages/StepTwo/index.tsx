@@ -1,32 +1,63 @@
-import { NextLink } from "../../components/NextLink"
 import * as S from "./styles"
 import Arcade  from '/images/icon-arcade.svg'
 import Advanced  from '/images/icon-advanced.svg'
 import Pro  from '/images/icon-pro.svg'
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as zod from 'zod'
+import { FormDataContext, StepTwoDataProps } from "../../contexts/FormDataContext"
+import { SubmitButton } from "../../styles/SubmitButton"
+import { useNavigate } from "react-router-dom"
+import { GoBackButton } from "../../styles/GoBackButton"
+
+const StepTwoValidationSchema = zod.object({
+    plan: zod.enum(['arcade', 'advanced', 'pro']),
+    billing: zod.enum(['monthly', 'yearly'])
+})
 
 export function StepTwo() {
-    const [yearlyChecked, setYearlyChecked] = useState(false)
+    const { stepTwoData, setStepTwoData, billingOptions } = useContext(FormDataContext)
+    
+    const planForm = useForm({
+        resolver: zodResolver(StepTwoValidationSchema),
+        defaultValues: {
+            plan: stepTwoData.plan,
+            billing: stepTwoData.billing
+        }
+    })
+    
+    const [yearlyChecked, setYearlyChecked] = useState( stepTwoData.billing == 'yearly' ? true : false )
+    console.log(stepTwoData)
+
+    const { register, handleSubmit, setValue } = planForm
+
     let arcadePrice
     let advancedPrice
     let proPrice
 
     if (yearlyChecked) {
-        arcadePrice = '$90/mês'
-        advancedPrice = '$120/mês'
-        proPrice = '$150/mês'
+        arcadePrice = `$${billingOptions.yearly.arcadePrice}/mês`
+        advancedPrice = `$${billingOptions.yearly.advancedPrice}/mês`
+        proPrice = `$${billingOptions.yearly.proPrice}/mês`
     } else {
-        arcadePrice = '$9/mês'
-        advancedPrice = '$12/mês'
-        proPrice = '$15/mês'
+        arcadePrice = `$${billingOptions.monthly.arcadePrice}/mês`
+        advancedPrice = `$${billingOptions.monthly.advancedPrice}/mês`
+        proPrice = `$${billingOptions.monthly.proPrice}/mês`
     }
 
-    function handleSetYearlyChecked() {
-        if (yearlyChecked) {
-            setYearlyChecked(false)
-        } else {
-            setYearlyChecked(true)
+    const navigate = useNavigate()
+
+    function onSubmit(data: StepTwoDataProps) {
+        if (StepTwoValidationSchema.safeParse(data)) {
+            setStepTwoData(data)
+            navigate('/extras')
         }
+    }
+
+    function saveAnyData(data: StepTwoDataProps) {
+        setStepTwoData(data)
+        navigate('/')
     }
 
     return (
@@ -36,9 +67,9 @@ export function StepTwo() {
                     <h1>Selecione seu plano</h1>
                     <S.SubText>Você tem a opção de pagamento mensal ou anual.</S.SubText>
 
-                    <S.Form action="">
+                    <S.Form onSubmit={handleSubmit(onSubmit)}>
                         <S.FormFirstSection>
-                            <S.Input type="radio" name="plans" id="arcade" />
+                            <S.Input type="radio" {...register('plan')} id="arcade" value='arcade' />
                             <S.Label htmlFor="arcade">
                                 <S.Icon src={Arcade} alt="" />
                                 <div>
@@ -48,7 +79,7 @@ export function StepTwo() {
                                 </div>
                             </S.Label>
                         
-                            <S.Input type="radio" name="plans" id="advanced" />
+                            <S.Input type="radio" {...register('plan')} id="advanced" value='advanced' />
                             <S.Label htmlFor="advanced">
                                 <S.Icon src={Advanced} alt="" />
                                 <div>
@@ -58,7 +89,7 @@ export function StepTwo() {
                                 </div>
                             </S.Label>
                             
-                            <S.Input type="radio" name="plans" id="pro" />
+                            <S.Input type="radio" {...register('plan')} id="pro" value='pro' />
                             <S.Label htmlFor="pro">
                                 <S.Icon src={Pro} alt="" />
                                 <div>
@@ -73,21 +104,21 @@ export function StepTwo() {
                             <div>
                                 <S.PaymentInput 
                                     type="radio" 
-                                    name="payment" 
+                                    {...register('billing')} 
+                                    value='monthly'
                                     id="monthly" 
-                                    checked={!yearlyChecked}
-                                    onChange={handleSetYearlyChecked}
+                                    onChange={() => setYearlyChecked(!yearlyChecked)}
                                 />
                                 <S.PaymentLabel htmlFor="monthly">Mensal</S.PaymentLabel>
                             </div>
-                            <S.GearButton type='button' checked={yearlyChecked} onClick={handleSetYearlyChecked}></S.GearButton>
+                            <S.GearButton type='button' checked={yearlyChecked} onClick={() => [setYearlyChecked(!yearlyChecked), setValue('billing', yearlyChecked ? 'monthly' : 'yearly')]}></S.GearButton>
                             <div>
                                 <S.PaymentInput 
                                     type="radio" 
-                                    name="payment" 
+                                    {...register('billing')}
+                                    value='yearly'
                                     id="yearly"
-                                    checked={yearlyChecked}
-                                    onChange={handleSetYearlyChecked}
+                                    onChange={() => setYearlyChecked(!yearlyChecked)}
                                 />
                                 <S.PaymentLabel htmlFor="yearly">Anual</S.PaymentLabel>
                             </div>
@@ -95,8 +126,8 @@ export function StepTwo() {
                     </S.Form>
                 </div>
                 <S.BottomDiv>
-                    <S.GoBackLink to='/'>Voltar</S.GoBackLink>
-                    <NextLink to='/extras'>Próximo</NextLink>
+                    <GoBackButton onClick={handleSubmit(saveAnyData)}>Voltar</GoBackButton>
+                    <SubmitButton onClick={handleSubmit(onSubmit)}>Próximo</SubmitButton>
                 </S.BottomDiv>
             </S.SubContainer>
         </S.Container>

@@ -101,7 +101,7 @@ export const FormSecondSection = styled.div`
 export const PaymentInput = styled.input`
     display: none;
 
-    &:checked ~ label {
+    &:checked + label {
         color: ${props => props.theme.text};
     }
 `
