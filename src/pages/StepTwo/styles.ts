@@ -43,10 +43,6 @@ export const FormFirstSection = styled.div`
 
 export const Input = styled.input`
     display: none;
-    &:checked ~ label {
-        background-color: ${props => props.theme.bgActiveChoices};
-        box-shadow: 0 0 0 .6px ${props => props.theme.bgButton};
-    }
 `
 
 export const Label = styled.label`
@@ -61,6 +57,11 @@ export const Label = styled.label`
     cursor: pointer;
 
     &:hover {
+        box-shadow: 0 0 0 .6px ${props => props.theme.bgButton};
+    }
+
+    input:checked + & {
+        background-color: ${props => props.theme.bgActiveChoices};
         box-shadow: 0 0 0 .6px ${props => props.theme.bgButton};
     }
 `

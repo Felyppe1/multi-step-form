@@ -38,39 +38,36 @@ export function StepTwo() {
 
                     <S.Form action="">
                         <S.FormFirstSection>
-                            <div>
-                                <S.Input type="radio" name="plans" id="arcade" />
-                                <S.Label htmlFor="arcade">
-                                    <S.Icon src={Arcade} alt="" />
-                                    <div>
-                                        <S.PlanName>Arcade</S.PlanName>
-                                        <S.PlanValue>{arcadePrice}</S.PlanValue>
-                                        {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
-                                    </div>
-                                </S.Label>
-                            </div>
-                            <div>
-                                <S.Input type="radio" name="plans" id="advanced" />
-                                <S.Label htmlFor="advanced">
-                                    <S.Icon src={Advanced} alt="" />
-                                    <div>
-                                        <S.PlanName>Avançado</S.PlanName>
-                                        <S.PlanValue>{advancedPrice}</S.PlanValue>
-                                        {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
-                                    </div>
-                                </S.Label>
-                            </div>
-                            <div>
-                                <S.Input type="radio" name="plans" id="pro" />
-                                <S.Label htmlFor="pro">
-                                    <S.Icon src={Pro} alt="" />
-                                    <div>
-                                        <S.PlanName>Profissional</S.PlanName>
-                                        <S.PlanValue>{proPrice}</S.PlanValue>
-                                        {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
-                                    </div>
-                                </S.Label>
-                            </div>
+                            <S.Input type="radio" name="plans" id="arcade" />
+                            <S.Label htmlFor="arcade">
+                                <S.Icon src={Arcade} alt="" />
+                                <div>
+                                    <S.PlanName>Arcade</S.PlanName>
+                                    <S.PlanValue>{arcadePrice}</S.PlanValue>
+                                    {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
+                                </div>
+                            </S.Label>
+                        
+                            <S.Input type="radio" name="plans" id="advanced" />
+                            <S.Label htmlFor="advanced">
+                                <S.Icon src={Advanced} alt="" />
+                                <div>
+                                    <S.PlanName>Avançado</S.PlanName>
+                                    <S.PlanValue>{advancedPrice}</S.PlanValue>
+                                    {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
+                                </div>
+                            </S.Label>
+                            
+                            <S.Input type="radio" name="plans" id="pro" />
+                            <S.Label htmlFor="pro">
+                                <S.Icon src={Pro} alt="" />
+                                <div>
+                                    <S.PlanName>Profissional</S.PlanName>
+                                    <S.PlanValue>{proPrice}</S.PlanValue>
+                                    {yearlyChecked && <S.MonthsFree>2 meses grátis</S.MonthsFree>}
+                                </div>
+                            </S.Label>
+                            
                         </S.FormFirstSection>
                         <S.FormSecondSection>
                             <div>

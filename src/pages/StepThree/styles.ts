@@ -63,12 +63,12 @@ export const StyledCheckbox = styled.div`
 export const Input = styled.input`
     display: none;
 
-    &:checked ~ ${Label} {
+    &:checked + ${Label} {
         background-color: ${props => props.theme.bgActiveChoices};
         box-shadow: 0 0 0 .6px ${props => props.theme.bgButton};
     }
 
-    &:checked ~ ${Label} ${StyledCheckbox} {
+    &:checked + ${Label} ${StyledCheckbox} {
         background-color: ${props => props.theme.bgActiveCheckbox};
     }
 `
