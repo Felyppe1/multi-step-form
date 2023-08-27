@@ -23,18 +23,11 @@ export const SubContainer = styled.div`
     width: 100%;
 
     @media (max-width: 700px) {
-        padding: 1rem 0;
+        padding: 1rem .5rem;
     }
 `
 
 export const Title = styled.h1`
-    @media (max-width: 700px) {
-        font-size: 1.85rem;
-    }
-
-    @media (max-width: 600px) {
-        font-size: 2rem;
-    }
 `
 
 export const SubText = styled.p`

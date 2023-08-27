@@ -23,6 +23,12 @@ export const GlobalStyles = createGlobalStyle`
     h1 {
         color: ${props => props.theme.bgButton};
     }
+    
+    @media (max-width: 700px) {
+        html {
+            font-size: 90%;
+        }
+    }
 
     @media (max-width: 400px) {
         html {
