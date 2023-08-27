@@ -32,7 +32,7 @@ export const GlobalStyles = createGlobalStyle`
 
     @media (max-width: 400px) {
         html {
-            font-size: 80%;
+            font-size: 86%;
         }
     }
 `

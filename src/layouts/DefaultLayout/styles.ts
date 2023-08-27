@@ -42,7 +42,7 @@ export const Main = styled.main`
     min-height: 28rem;
 
     @media (max-width: 680px) {
-        width: 88%;
+        width: 93%;
     }
 
     @media (max-width: 600px) {

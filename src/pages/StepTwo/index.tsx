@@ -37,9 +37,9 @@ export function StepTwo() {
     let proPrice
 
     if (yearlyChecked) {
-        arcadePrice = `$${billingInfos.yearly.planPrices.arcadePrice}/mês`
-        advancedPrice = `$${billingInfos.yearly.planPrices.advancedPrice}/mês`
-        proPrice = `$${billingInfos.yearly.planPrices.proPrice}/mês`
+        arcadePrice = `$${billingInfos.yearly.planPrices.arcadePrice}/ano`
+        advancedPrice = `$${billingInfos.yearly.planPrices.advancedPrice}/ano`
+        proPrice = `$${billingInfos.yearly.planPrices.proPrice}/ano`
     } else {
         arcadePrice = `$${billingInfos.monthly.planPrices.arcadePrice}/mês`
         advancedPrice = `$${billingInfos.monthly.planPrices.advancedPrice}/mês`

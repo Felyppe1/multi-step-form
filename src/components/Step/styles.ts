@@ -21,11 +21,20 @@ export const Span = styled.span<SpanProps>`
     flex-shrink: 0;
     color: ${props => props.$active ? 'black' : props.theme.white};
     background-color: ${props => props.$active && props.theme.bgActiveStep};
+
+    @media (max-width: 700px) {
+        width: calc(.9 * 2.3rem);
+        height: calc(.9 * 2.3rem);
+    }
 `
 
 export const FirstText = styled.p`
     color: ${props => props.theme.subText};
     font-size: .75rem;
+
+    @media (max-width: 700px) {
+        font-size: calc(.9 * .75rem);
+    }
 `
 
 export const SecondText = styled.p`
@@ -34,4 +43,8 @@ export const SecondText = styled.p`
     margin-top: .25rem;
     font-size: .9rem;
     white-space: nowrap;
+
+    @media (max-width: 700px) {
+        font-size: calc(.9 * .9rem);
+    }
 `

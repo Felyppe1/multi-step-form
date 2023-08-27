@@ -6,7 +6,6 @@ export function StepFour() {
     const { stepTwoData, stepThreeData, billingInfos } = useContext(FormDataContext)
 
     const plan = stepTwoData.plan.charAt(0).toUpperCase() + stepTwoData.plan.slice(1)
-    console.log(plan)
     let billing 
     let billingPrice
     let onlineServicesPrice
@@ -62,26 +61,32 @@ export function StepFour() {
                                     <p>{`${plan} (${billing})`}</p>
                                     <S.NavChange to='/plano'>Alterar</S.NavChange>
                                 </div>
-                                <p>${billingPrice}/mês</p>
+                                <p>{stepTwoData.billing == 'monthly' ? `${billingPrice}/mês` : `${billingPrice}/ano`}</p>
                             </S.PlanDiv>
                             {(stepThreeData.onlineServices || stepThreeData.storage || stepThreeData.profile) &&
                             <S.AddsOnDiv>
                                 {stepThreeData.onlineServices &&
                                 <S.BaseDiv>
                                     <S.ItemText>Serviço online</S.ItemText>
-                                    <S.PriceText>+${onlineServicesPrice}/mês</S.PriceText>
+                                    <S.PriceText>
+                                        {stepTwoData.billing == 'monthly' ? `+${onlineServicesPrice}/mês` : `+${billingPrice}/ano`}
+                                    </S.PriceText>
                                 </S.BaseDiv>
                                 }
                                 {stepThreeData.storage &&
                                 <S.BaseDiv>
                                     <S.ItemText>Mais armazenamento</S.ItemText>
-                                    <S.PriceText>+${storagePrice}/mês</S.PriceText>
+                                    <S.PriceText>
+                                        {stepTwoData.billing == 'monthly' ? +`+${storagePrice}/mês` : `+${storagePrice}/ano`}
+                                    </S.PriceText>
                                 </S.BaseDiv>
                                 }
                                 {stepThreeData.profile &&
                                 <S.BaseDiv>
                                     <S.ItemText>Perfil personalizado</S.ItemText>
-                                    <S.PriceText>+${profilePrice}/mês</S.PriceText>
+                                    <S.PriceText>
+                                        {stepTwoData.billing == 'monthly' ? +`+${profilePrice}/mês` : `+${profilePrice}/ano`}
+                                    </S.PriceText>
                                 </S.BaseDiv>
                                 }
                             </S.AddsOnDiv>

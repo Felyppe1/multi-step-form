@@ -34,13 +34,13 @@ export function StepThree() {
     let profilePrice
 
     if (stepTwoData.billing == 'monthly') {
-        onlineServicesPrice = billingInfos.monthly.addsOnPrices.onlineServices
-        storagePrice = billingInfos.monthly.addsOnPrices.storage
-        profilePrice = billingInfos.monthly.addsOnPrices.profile
+        onlineServicesPrice = `+${billingInfos.monthly.addsOnPrices.onlineServices}/mês`
+        storagePrice = `+${billingInfos.monthly.addsOnPrices.storage}/mês`
+        profilePrice = `+${billingInfos.monthly.addsOnPrices.profile}/mês`
     } else {
-        onlineServicesPrice = billingInfos.yearly.addsOnPrices.onlineServices
-        storagePrice = billingInfos.yearly.addsOnPrices.storage
-        profilePrice = billingInfos.yearly.addsOnPrices.profile
+        onlineServicesPrice = `+${billingInfos.yearly.addsOnPrices.onlineServices}/ano`
+        storagePrice = `+${billingInfos.yearly.addsOnPrices.storage}/ano`
+        profilePrice = `+${billingInfos.yearly.addsOnPrices.profile}/ano`
     }
 
     const navigate = useNavigate()
@@ -73,7 +73,7 @@ export function StepThree() {
                                     <S.SecondText>Acesso a jogos multijogadores</S.SecondText>
                                 </div>
                             </S.FieldWrapper>
-                            <S.PriceText>+${onlineServicesPrice}/mês</S.PriceText>
+                            <S.PriceText>{onlineServicesPrice}</S.PriceText>
                         </S.Label>
                     
                         <S.Input type="checkbox" {...register('storage')} id="storage" />
@@ -87,7 +87,7 @@ export function StepThree() {
                                     <S.SecondText>1TB extra de armazenamento na nuvem</S.SecondText>
                                 </div>
                             </S.FieldWrapper>
-                            <S.PriceText>+${storagePrice}/mês</S.PriceText>
+                            <S.PriceText>{storagePrice}</S.PriceText>
                         </S.Label>
                     
                         <S.Input type="checkbox" {...register('profile')} id="profile"/>
@@ -101,7 +101,7 @@ export function StepThree() {
                                     <S.SecondText>Customize temas no seu perfil</S.SecondText>
                                 </div>
                             </S.FieldWrapper>
-                            <S.PriceText>+${profilePrice}/mês</S.PriceText>
+                            <S.PriceText>{profilePrice}</S.PriceText>
                         </S.Label>
                     </S.Form>
                 </div>
