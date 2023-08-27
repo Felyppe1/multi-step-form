@@ -53,8 +53,8 @@ export function StepFour() {
         <S.Container>
             <S.SubContainer>
                 <div>
-                    <h1>Escolha adicionais</h1>
-                    <S.SubText>Adicionais ajudam a enriquecer sua experiência.</S.SubText>
+                    <h1>Revisão</h1>
+                    <S.SubText>Verifique se está tudo certo antes de confirmar.</S.SubText>
                     <div>
                         <S.ReviewDiv>
                             <S.PlanDiv>
@@ -64,6 +64,7 @@ export function StepFour() {
                                 </div>
                                 <p>${billingPrice}/mês</p>
                             </S.PlanDiv>
+                            {(stepThreeData.onlineServices || stepThreeData.storage || stepThreeData.profile) &&
                             <S.AddsOnDiv>
                                 {stepThreeData.onlineServices &&
                                 <S.BaseDiv>
@@ -84,6 +85,7 @@ export function StepFour() {
                                 </S.BaseDiv>
                                 }
                             </S.AddsOnDiv>
+                            }
                             
                         </S.ReviewDiv>
                         <S.TotalDiv>

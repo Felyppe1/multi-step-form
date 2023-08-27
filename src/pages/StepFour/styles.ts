@@ -43,6 +43,7 @@ export const ReviewDiv = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    border-radius: .6rem;
 `
 
 export const BaseDiv = styled.div`
