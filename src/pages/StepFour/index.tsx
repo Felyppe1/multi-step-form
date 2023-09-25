@@ -77,7 +77,7 @@ export function StepFour() {
                                 <S.BaseDiv>
                                     <S.ItemText>Mais armazenamento</S.ItemText>
                                     <S.PriceText>
-                                        {stepTwoData.billing == 'monthly' ? +`+${storagePrice}/mês` : `+${storagePrice}/ano`}
+                                        {stepTwoData.billing == 'monthly' ? `+${storagePrice}/mês` : `+${storagePrice}/ano`}
                                     </S.PriceText>
                                 </S.BaseDiv>
                                 }
@@ -85,7 +85,7 @@ export function StepFour() {
                                 <S.BaseDiv>
                                     <S.ItemText>Perfil personalizado</S.ItemText>
                                     <S.PriceText>
-                                        {stepTwoData.billing == 'monthly' ? +`+${profilePrice}/mês` : `+${profilePrice}/ano`}
+                                        {stepTwoData.billing == 'monthly' ? `+${profilePrice}/mês` : `+${profilePrice}/ano`}
                                     </S.PriceText>
                                 </S.BaseDiv>
                                 }
